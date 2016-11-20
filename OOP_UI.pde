@@ -1,4 +1,5 @@
-
+float transparency;
+float trans;
 void setup()
 {
   size(1150,850);
@@ -11,6 +12,10 @@ void setup()
     noStroke();
     ellipse(random(0, 1150), random(0, 850), random(0, 5), random(0 , 5)); 
   }
+  
+  //For pulsating colors
+  transparency = 1;
+  trans = -0.01;
 }
 
 void draw()
@@ -63,6 +68,21 @@ void radar_tool()
 
 void pulsating_lines()
 {
+   float a = map(transparency, 0, 1, 0, 255);
+   stroke(0, 255, 255, a);
+   strokeWeight(3);
+   transparency += trans;
+   
+   //If statements to control the pulsating colors
+   if (transparency < 0) 
+   {
+      trans = - trans;
+   } 
+   else if (transparency > 1)
+   {
+      trans = - trans;
+   }
+   
    //TOP LEFT
    line(10, 10, 10, 165);
    line(13, 10, 165, 10);
