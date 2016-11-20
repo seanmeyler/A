@@ -44,5 +44,8 @@ void basic_shape()
 
 void radar_tool()
 {
-  
+   fill(0);
+   stroke(40, 40, 40);
+   strokeWeight(10);
+   ellipse(187, 167, 250, 250);
 }
