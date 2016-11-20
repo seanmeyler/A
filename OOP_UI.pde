@@ -17,6 +17,7 @@ void draw()
 {
   basic_shape();
   radar_tool();
+  pulsating_lines();
 }
 
 void basic_shape()
@@ -58,4 +59,20 @@ void radar_tool()
      ellipse(187, 167, rad_width, rad_width);
      rad_width += 15;
    } 
+}
+
+void pulsating_lines()
+{
+   //TOP LEFT
+   line(10, 10, 10, 165);
+   line(13, 10, 165, 10);
+   //BOTTOM RIGHT
+   line(width - 10, height - 90, width - 10, height - 165);
+   line(width - 10, height - 90, width - 90, height - 90);
+   //TOP RIGHT
+   line(width - 7, 10, width - 10, 165);
+   line(width - 10, 10, width - 165, 10);
+   //BOTTOM LEFT
+   line(10, height - 90, 10, height - 165);
+   line(13, height - 90, 90, height - 90); 
 }
