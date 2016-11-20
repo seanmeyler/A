@@ -44,8 +44,18 @@ void basic_shape()
 
 void radar_tool()
 {
+   int rad_width = 15;
    fill(0);
    stroke(40, 40, 40);
    strokeWeight(10);
    ellipse(187, 167, 250, 250);
+   
+   for(int i = 1; i < 16; i++)
+   {
+     stroke(0, 255, 255);
+     strokeWeight(0.3);
+     noFill();
+     ellipse(187, 167, rad_width, rad_width);
+     rad_width += 15;
+   } 
 }
