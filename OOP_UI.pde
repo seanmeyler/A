@@ -1,5 +1,8 @@
 float transparency;
 float trans;
+int load_width = 0;
+int sys1 = 0;
+
 void setup()
 {
   size(1150,850);
@@ -22,6 +25,7 @@ void draw()
 {
   basic_shape();
   radar_tool();
+  system_display();
   pulsating_lines();
 }
 
@@ -95,4 +99,37 @@ void pulsating_lines()
    //BOTTOM LEFT
    line(10, height - 90, 10, height - 165);
    line(13, height - 90, 90, height - 90); 
+}
+
+void system_display()
+{  
+   if(sys1 == 0)
+   {
+     fill(0);
+     stroke(40, 40, 40);
+     strokeWeight(10);
+     rect(425, height - 250, 300, 175, 15);
+     //System Loading Display
+     noFill();
+     strokeWeight(1);
+     rect(475, height - 150, 200, 10);
+     fill(0, 153, 153);
+     noStroke();
+     rect(475, height - 150, load_width, 10);
+     textSize(20);
+     text("SYSTEM LOADING...", 485, height - 170);
+     if(load_width <= 200)
+     {
+       load_width++;
+     }
+     if(load_width == 200)
+     {
+       sys1 = 1;
+       fill(0);
+       rect(425, height - 250, 300, 175, 15);
+       fill(0, 153, 153);
+       textSize(30);
+       text("SYSTEM ONLINE:", 460, height - 160);
+     }
+   }
 }
