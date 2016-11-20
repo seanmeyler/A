@@ -16,6 +16,7 @@ void setup()
 void draw()
 {
   basic_shape();
+  radar_tool();
 }
 
 void basic_shape()
@@ -39,4 +40,9 @@ void basic_shape()
    line(width - 200, 0, width, 200);
    line(0, height - 200, 122, height - 77);
    line(width, height - 200,  width - 120, height - 78);
+}
+
+void radar_tool()
+{
+  
 }
