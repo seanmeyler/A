@@ -2,7 +2,11 @@ float transparency;
 float trans;
 int load_width = 0;
 int sys1 = 0;
-
+int circleSize = 40;
+int MAXCIRCLES = 100; 
+int[] a = new int[MAXCIRCLES]; 
+int circles = 1;
+radar_circle[] myCircle;
 void setup()
 {
   size(1150,850);
@@ -19,6 +23,14 @@ void setup()
   //For pulsating colors
   transparency = 1;
   trans = -0.01;
+  
+  frameRate(60); 
+  smooth();
+  stroke(0, 255, 255);
+  strokeWeight(1); 
+   myCircle = new radar_circle[MAXCIRCLES]; 
+  // Initial radar_circle
+   myCircle[0]  = new radar_circle(187, 167);
 }
 
 void draw()
@@ -132,4 +144,26 @@ void system_display()
        text("SYSTEM ONLINE:", 460, height - 160);
      }
    }
+}
+
+class radar_circle
+{
+  float radius, xpos = 187, ypos = 167; 
+  radar_circle (float x, float y) 
+  { 
+    radius = 0; 
+    xpos = x; 
+    ypos = y; 
+  } 
+  void update()
+  { 
+     stroke(0, 255, 255);
+     strokeWeight(1); 
+     radius++; 
+     if (radius > 230)
+     {
+       radius = 0; 
+     }
+     ellipse(xpos,ypos, radius,radius); 
+  } 
 }
