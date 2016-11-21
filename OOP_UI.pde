@@ -12,6 +12,11 @@ int MAXCIRCLES = 100;
 int[] a = new int[MAXCIRCLES]; 
 int circles = 1;
 radar_circle[] myCircle;
+boolean overCircle1 = false;
+boolean overCircle2 = false;
+boolean overCircle3 = false;
+
+
 void setup()
 {
   size(1150,850);
@@ -269,4 +274,137 @@ void weapons_system()
    line(width - 89, 240, width - 7, 240);
    line(width - 89, 380, width - 7, 380);
    line(width - 89, 530, width - 7, 530);
+}
+
+void mouseOver()
+{
+   fill(10, 10, 10);
+   stroke(40, 40, 40);
+   strokeWeight(2);
+   ellipse(width - 47, 325, circleSize, circleSize);
+   ellipse(width - 47, 465, circleSize, circleSize);
+   ellipse(width - 47, 615, circleSize, circleSize);
+  
+  //BUTTON 1
+  if (mouseX > width - 47 - circleSize && mouseX < width - 47 + circleSize && mouseY > 325 - circleSize && mouseY < 325 + circleSize)
+  {
+    overCircle1 = true;  
+    if(overCircle1) 
+    { 
+      
+      stroke(40, 40, 40);
+      strokeWeight(2);
+      float a = map(transparency, 0, 1, 0, 255);
+      fill(0, 153, 153, a);
+      transparency += trans;
+       
+      //If statements to control the pulsating colors
+      if (transparency < 0) 
+      {
+        trans = - trans;
+      } 
+      else if (transparency > 1)
+      {
+         trans = - trans;
+      }
+      ellipse(width - 47, 325, circleSize, circleSize);
+      
+      if(mousePressed)
+      {
+         fill(0, 153, 153);
+         ellipse(width - 47, 325, circleSize, circleSize);
+         overCircle1 = false;
+      }
+   } 
+  }
+  else 
+  {
+    fill(10,10,10);
+    stroke(40, 40, 40);
+    strokeWeight(2);
+    overCircle1 = false;
+  }
+  ellipse(width - 47, width - 47, circleSize, circleSize);
+  
+  //BUTTON 2
+  if (mouseX > width - 47 - circleSize && mouseX < width - 47 + circleSize && mouseY > 465 - circleSize && mouseY < 465 + circleSize)
+  {
+    overCircle2 = true;  
+    if(overCircle2) 
+    { 
+      
+      stroke(40, 40, 40);
+      strokeWeight(2);
+      float a = map(transparency, 0, 1, 0, 255);
+      fill(0, 153, 153, a);
+      transparency += trans;
+       
+      //If statements to control the pulsating colors
+      if (transparency < 0) 
+      {
+        trans = - trans;
+      } 
+      else if (transparency > 1)
+      {
+         trans = - trans;
+      }
+      ellipse(width - 47, 465, circleSize, circleSize);
+      
+      if(mousePressed)
+      {
+         fill(0, 153, 153);
+         ellipse(width - 47, 465, circleSize, circleSize);
+         overCircle1 = false;
+      }
+    } 
+   }
+  else 
+  {
+    fill(10,10,10);
+    stroke(40, 40, 40);
+    strokeWeight(2);
+    overCircle2 = false;
+  }
+  ellipse(width - 47, width - 47, circleSize, circleSize);
+  
+  //BUTTON 3
+  if (mouseX > width - 47 - circleSize && mouseX < width - 47 + circleSize && mouseY > 615 - circleSize && mouseY < 615 + circleSize)
+  {
+    overCircle3 = true;  
+    if(overCircle3) 
+    { 
+      
+      stroke(40, 40, 40);
+      strokeWeight(2);
+      float a = map(transparency, 0, 1, 0, 255);
+      fill(0, 153, 153, a);
+      transparency += trans;
+       
+      //If statements to control the pulsating colors
+      if (transparency < 0) 
+      {
+        trans = - trans;
+      } 
+      else if (transparency > 1)
+      {
+         trans = - trans;
+      }
+      ellipse(width - 47, 615, circleSize, circleSize);
+      
+      if(mousePressed)
+      {
+         fill(0, 153, 153);
+         ellipse(width - 47, 615, circleSize, circleSize);
+         overCircle1 = false;
+      }
+    } 
+  }
+  else 
+  {
+    fill(10,10,10);
+    stroke(40, 40, 40);
+    strokeWeight(2);
+    overCircle3 = false;
+  }
+  ellipse(width - 47, width - 47, circleSize, circleSize);
 }
