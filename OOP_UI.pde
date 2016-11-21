@@ -41,6 +41,9 @@ void setup()
    myCircle = new radar_circle[MAXCIRCLES]; 
   // Initial radar_circle
    myCircle[0]  = new radar_circle(187, 167);
+  
+  //Wanted a differenct curson rather than a mouse pointer for a more SciFi look
+  cursor(CROSS); 
 }
 
 void draw()
