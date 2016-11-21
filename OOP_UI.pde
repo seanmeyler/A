@@ -2,6 +2,7 @@ float transparency;
 float trans;
 int load_width = 0;
 int sys1 = 0;
+int engine_status = 0;
 int circleSize = 40;
 int MAXCIRCLES = 100; 
 int[] a = new int[MAXCIRCLES]; 
@@ -39,6 +40,7 @@ void draw()
   radar_tool();
   system_display();
   pulsating_lines();
+  speed_display();
 }
 
 void basic_shape()
@@ -144,6 +146,78 @@ void system_display()
        text("SYSTEM ONLINE:", 460, height - 160);
      }
    }
+}
+
+void speed_display()
+{
+   fill(0);
+   stroke(40, 40, 40);
+   strokeWeight(4);
+   rect(120, height - 220, 200, 150, 15);
+   rect(75, height - 63, 385, 60, 15);
+   stroke(43, 131, 161);
+   strokeWeight(1);
+   line(123, height  - 145, 317, height - 145);
+   line(207, height  - 60, 207, height - 6);
+   line(333, height  - 60, 333, height - 6);
+   fill(0, 153, 153);
+   textSize(16);
+   text("SPEED:", 130, height - 200);
+   textSize(16);
+   text("ENERGY:", 130, height - 125);
+   fill(0, 220, 260);
+   if(engine_status == 0)
+   {
+     fill(0, 153, 153);
+     textSize(12);
+     text("ENGINE STATUS:", 90, height - 50);
+     textSize(20);
+     text("1: INACTIVE", 90, height - 25);
+     textSize(20);
+     text("2: INACTIVE", 215, height - 25);
+     textSize(20);
+     text("3: INACTIVE", 340, height - 25);
+   }
+   else
+   {
+     fill(0);
+     stroke(40, 40, 40);
+     strokeWeight(4);
+     rect(75, height - 63, 385, 60, 15);
+     fill(0, 153, 153);
+     stroke(43, 131, 161);
+     strokeWeight(1);
+     line(123, height  - 145, 317, height - 145);
+     line(207, height  - 60, 207, height - 6);
+     line(333, height  - 60, 333, height - 6);
+     textSize(12);
+     text("ENGINE STATUS:", 90, height - 50);
+     textSize(20);
+     text("1: ACTIVE", 90, height - 25);
+     textSize(20);
+     text("2: ACTIVE", 215, height - 25);
+     textSize(20);
+     text("3: ACTIVE", 340, height - 25); 
+   }
+   
+   fill(0);
+   stroke(0, 153, 153);
+   strokeWeight(1);
+   rect(130, height - 110, 100, 15);
+   fill(0, 153, 153);
+   noStroke();
+   rect(130, height - 110, fuel_width, 15);
+   fill(0, 153, 153);
+   textSize(30);
+   text(fuel_num, 245, height - 93); 
+   textSize(24);
+   text("%", 295, height - 97);
+   
+   fill(0);
+   stroke(0, 153, 153);
+   triangle(135, height - 155, 300, height - 205, 300, height - 155);
+   fill(0, 153, 153);
+   triangle(135, height - 155, speed_width, speed_height, speed_width, height - 155);
 }
 
 class radar_circle
