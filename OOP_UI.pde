@@ -230,28 +230,6 @@ void speed_display()
    triangle(135, height - 155, speed_width, speed_height, speed_width, height - 155);
 }
 
-class radar_circle
-{
-  float radius, xpos = 187, ypos = 167; 
-  radar_circle (float x, float y) 
-  { 
-    radius = 0; 
-    xpos = x; 
-    ypos = y; 
-  } 
-  void update()
-  { 
-     stroke(0, 255, 255);
-     strokeWeight(1); 
-     radius++; 
-     if (radius > 230)
-     {
-       radius = 0; 
-     }
-     ellipse(xpos,ypos, radius,radius); 
-  } 
-}
-
 void weapons_system()
 {
    fill(0);
@@ -407,4 +385,26 @@ void mouseOver()
     overCircle3 = false;
   }
   ellipse(width - 47, width - 47, circleSize, circleSize);
+}
+
+class radar_circle
+{
+  float radius, xpos = 187, ypos = 167; 
+  radar_circle (float x, float y) 
+  { 
+    radius = 0; 
+    xpos = x; 
+    ypos = y; 
+  } 
+  void update()
+  { 
+     stroke(0, 255, 255);
+     strokeWeight(1); 
+     radius++; 
+     if (radius > 230)
+     {
+       radius = 0; 
+     }
+     ellipse(xpos,ypos, radius,radius); 
+  } 
 }
