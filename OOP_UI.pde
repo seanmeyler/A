@@ -1,6 +1,10 @@
 float transparency;
 float trans;
 int load_width = 0;
+float fuel_width = 100;
+int fuel_num = 100;
+int speed_height = 695;
+float speed_width = 140;
 int sys1 = 0;
 int engine_status = 0;
 int circleSize = 40;
@@ -41,6 +45,7 @@ void draw()
   system_display();
   pulsating_lines();
   speed_display();
+  weapons_system();
 }
 
 void basic_shape()
@@ -240,4 +245,28 @@ class radar_circle
      }
      ellipse(xpos,ypos, radius,radius); 
   } 
+}
+
+void weapons_system()
+{
+   fill(0);
+   stroke(50, 50, 50);
+   strokeWeight(6);
+   rect(width - 93, 175, 90, 500, 15);
+   fill(0, 153, 153);
+   textSize(15);
+   text("WEAPONS", width - 80, 200);
+   text("SYSTEM", width - 75, 215);
+   text("ONLINE:", width - 72, 230);
+   text("LASER", width - 72, 260);
+   text("BEAM:", width - 72, 275);
+   text("PULSE", width - 72, 400);
+   text("RIFLES:", width - 75, 415);
+   text("BLASTER", width - 77, 550);
+   text("CANNON:", width - 75, 565);
+   stroke(0, 153, 153);
+   strokeWeight(1);
+   line(width - 89, 240, width - 7, 240);
+   line(width - 89, 380, width - 7, 380);
+   line(width - 89, 530, width - 7, 530);
 }
