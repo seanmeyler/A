@@ -1,3 +1,4 @@
+PFont font;
 float transparency;
 float trans;
 int load_width = 0;
@@ -29,6 +30,10 @@ void setup()
     noStroke();
     ellipse(random(0, 1150), random(0, 850), random(0, 5), random(0 , 5)); 
   }
+  
+  //For Fonts
+  font = createFont("AR DESTINE", 60);
+  textFont(font);
   
   //For pulsating colors
   transparency = 1;
