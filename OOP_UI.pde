@@ -1,6 +1,15 @@
 PFont font;
+float rad_speed = 4.0f;
+float rad_speed2 = 1.0f;
+float line_x = 67;
+float line_y1 = 167f;
+float line_y2 = 167f;
 float transparency;
 float trans;
+float inc;
+float Xpos;
+float Ypos;
+float angle = 90;
 int load_width = 0;
 float fuel_width = 100;
 int fuel_num = 100;
@@ -12,6 +21,11 @@ int circleSize = 40;
 int MAXCIRCLES = 100; 
 int[] a = new int[MAXCIRCLES]; 
 int circles = 1;
+int missileleft_x = 50;
+int missileright_x = 1100;
+int missileleft_y = 750;
+int missileright_y = 750;
+int missileon = 0;
 radar_circle[] myCircle;
 boolean overCircle1 = false;
 boolean overCircle2 = false;
@@ -59,6 +73,15 @@ void draw()
   pulsating_lines();
   speed_display();
   weapons_system();
+  mouseOver();
+  
+   stroke(0, 255, 255);
+   strokeWeight(1); 
+   noFill(); 
+   for(int current = 0; current < circles; current++)
+   { 
+     myCircle[current].update();
+   }
 }
 
 void basic_shape()
@@ -415,4 +438,142 @@ class radar_circle
      }
      ellipse(xpos,ypos, radius,radius); 
   } 
+}
+
+void keyPressed()
+{
+  if(key == 'p')
+  {
+    engine_status = 1;
+    
+    if(fuel_width >= 0)
+    {
+       fuel_width--;
+       fuel_num--;
+    }
+    
+    if(speed_width <= 300)
+    {
+       speed_height--; 
+       speed_width = speed_width + 3.2;
+    }
+  }
+  
+  if(key == 'o')
+  {
+     engine_status = 0; 
+    
+    if(fuel_width <= 0)
+    {
+       fuel_width++;
+    }
+    
+    if(speed_width <= 210 || fuel_num != 100)
+    {
+       fuel_num++; 
+       fuel_width++;
+    }
+    if(speed_width >= 130)
+    {
+       speed_height++; 
+       speed_width = speed_width - 3.2;
+    }
+  }
+  
+  if(key == 'r')
+  {
+     if (circles < MAXCIRCLES) 
+     {
+       stroke(0, 255, 255);
+       strokeWeight(1); 
+       myCircle[circles]  = new radar_circle(187, 167); 
+       circles = circles + 1; 
+     }
+  }
+  
+  if(key == 'e')
+  {
+    circles = circles - 1; 
+  }
+  
+  if(key == '1')
+  {
+    missile1();
+    {
+      if (millis() < 5*1000) 
+      {
+            missileon = 1;
+      }
+      else 
+      {
+            missileon = 0;
+      }
+}
+  }
+  
+  if(key == '2')
+  {
+    
+  }
+  
+  if(key == '3')
+  {
+    fill(0, 255, 255);
+    stroke(40, 40, 40);
+    strokeWeight(2);
+    ellipse(width - 47, 615, circleSize, circleSize);
+  }
+  
+   if(key == '4')
+  {
+    fill(10, 10, 10);
+    stroke(40, 40, 40);
+    strokeWeight(2);
+    ellipse(width - 47, 325, circleSize, circleSize);
+    ellipse(width - 47, 465, circleSize, circleSize);
+    ellipse(width - 47, 615, circleSize, circleSize);
+  } 
+}
+
+
+void mousePressed()
+{
+  if (mouseX > width - 47 - circleSize && mouseX < width - 47 + circleSize && mouseY > 325 - circleSize && mouseY < 325 + circleSize && mousePressed)
+  {
+    fill(0, 153, 153);
+    ellipse(width - 47, width - 47, circleSize, circleSize);
+    overCircle1 = false;
+  } 
+  
+  if (mouseX > width - 47 - circleSize && mouseX < width - 47 + circleSize && mouseY > 465 - circleSize && mouseY < 465 + circleSize && mousePressed)
+  {
+    fill(0, 153, 153);
+    ellipse(width - 47, width - 47, circleSize, circleSize);
+    overCircle1 = false;
+  } 
+  
+  if (mouseX > width - 47 - circleSize && mouseX < width - 47 + circleSize && mouseY > 615 - circleSize && mouseY < 615 + circleSize && mousePressed)
+  {
+    fill(0, 153, 153);
+    ellipse(width - 47, width - 47, circleSize, circleSize);
+    overCircle1 = false;
+  }
+}
+
+void missile1()
+{
+   if(missileon == 1)
+   {
+     noStroke();
+     fill(255, 0 , 0);
+     triangle(missileleft_x, missileleft_y, mouseX, mouseY, mouseX + 10, mouseY);
+     triangle(missileright_x, missileright_y, mouseX, mouseY, mouseX + 10, mouseY);
+   }
+   else
+   {
+     noStroke();
+     fill(0);
+     triangle(missileleft_x, missileleft_y, mouseX, mouseY, mouseX + 10, mouseY);
+     triangle(missileright_x, missileright_y, mouseX, mouseY, mouseX + 10, mouseY); 
+   }
 }
