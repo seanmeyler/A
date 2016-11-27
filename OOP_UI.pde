@@ -495,44 +495,6 @@ void keyPressed()
   {
     circles = circles - 1; 
   }
-  
-  if(key == '1')
-  {
-    missile1();
-    {
-      if (millis() < 5*1000) 
-      {
-            missileon = 1;
-      }
-      else 
-      {
-            missileon = 0;
-      }
-}
-  }
-  
-  if(key == '2')
-  {
-    
-  }
-  
-  if(key == '3')
-  {
-    fill(0, 255, 255);
-    stroke(40, 40, 40);
-    strokeWeight(2);
-    ellipse(width - 47, 615, circleSize, circleSize);
-  }
-  
-   if(key == '4')
-  {
-    fill(10, 10, 10);
-    stroke(40, 40, 40);
-    strokeWeight(2);
-    ellipse(width - 47, 325, circleSize, circleSize);
-    ellipse(width - 47, 465, circleSize, circleSize);
-    ellipse(width - 47, 615, circleSize, circleSize);
-  } 
 }
 
 
