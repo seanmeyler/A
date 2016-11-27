@@ -1,4 +1,6 @@
 PFont font;
+PImage background;
+
 float rad_speed = 4.0f;
 float rad_speed2 = 1.0f;
 float line_x = 67;
@@ -35,7 +37,9 @@ boolean overCircle3 = false;
 void setup()
 {
   size(1150,850);
-  background(0);
+  //load background image
+  background = loadImage("space.jpg");
+  background(background);
   
   //Create Space Background of randomly generated stars
   for(int i = 0; i < 3000; i++)
@@ -67,6 +71,7 @@ void setup()
 
 void draw()
 {
+  lines();
   basic_shape();
   radar_tool();
   system_display();
@@ -84,6 +89,20 @@ void draw()
    }
 }
 
+void lines()
+{
+    strokeWeight(3);
+    stroke(0, 170, 255, 163);
+    //top
+    line(280, 0, 30, 250);
+    line(width - 280, 0, width - 30, 250);
+    //bottom
+    line(31, height - 280, 250, height);
+    line(width - 30, height - 280, width - 250, height);
+    //joining
+    line(30, 250, 30, 570);
+    line(30, height - 280, 250, height);
+}
 void basic_shape()
 {
    fill(96, 96, 96);
