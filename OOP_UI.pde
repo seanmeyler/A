@@ -1,6 +1,8 @@
 PFont font;
 PImage background;
 
+
+//VARIABLES
 float rad_speed = 4.0f;
 float rad_speed2 = 1.0f;
 float line_x = 67;
@@ -42,6 +44,7 @@ void setup()
   background(background);
   
   //Create Space Background of randomly generated stars
+  //For loop used to generate random white stars on top of picture background
   for(int i = 0; i < 3000; i++)
   {
     fill(255);
@@ -57,6 +60,8 @@ void setup()
   transparency = 1;
   trans = -0.01;
   
+  
+  //For radar circles
   frameRate(60); 
   smooth();
   stroke(0, 255, 255);
@@ -71,6 +76,7 @@ void setup()
 
 void draw()
 {
+  //Fuctions
   lines();
   basic_shape();
   radar_tool();
@@ -80,6 +86,7 @@ void draw()
   weapons_system();
   mouseOver();
   
+   //DRAWING RADAR CIRCLES
    stroke(0, 255, 255);
    strokeWeight(1); 
    noFill(); 
@@ -89,6 +96,8 @@ void draw()
    }
 }
 
+
+//This fuctions is just to make the screen look a little prettier, simply drawing a few lines on top of my background
 void lines()
 {
     strokeWeight(3);
@@ -103,6 +112,8 @@ void lines()
     line(30, 250, 30, 570);
     line(30, height - 280, 250, height);
 }
+
+//This fuction draws the basic shape of the UI using variuos shapes and sizes, I went for a greying blue color scheme to make the look more SciFi
 void basic_shape()
 {
    fill(96, 96, 96);
