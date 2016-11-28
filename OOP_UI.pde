@@ -303,6 +303,8 @@ void speed_display()
    triangle(135, height - 155, speed_width, speed_height, speed_width, height - 155);
 }
 
+
+//I wanted to make a few buttons as there would be in a spaceship UI that the pilot could switch between weapons
 void weapons_system()
 {
    fill(0);
@@ -336,6 +338,8 @@ void mouseOver()
    ellipse(width - 47, 465, circleSize, circleSize);
    ellipse(width - 47, 615, circleSize, circleSize);
   
+  
+  //I wanted to make each button of the weapon systems glow when the mouse hovered over it, I done this again with transparency
   //BUTTON 1
   if (mouseX > width - 47 - circleSize && mouseX < width - 47 + circleSize && mouseY > 325 - circleSize && mouseY < 325 + circleSize)
   {
@@ -460,6 +464,7 @@ void mouseOver()
   ellipse(width - 47, width - 47, circleSize, circleSize);
 }
 
+//This class is used to create the radar on effect
 class radar_circle
 {
   float radius, xpos = 187, ypos = 167; 
@@ -484,6 +489,8 @@ class radar_circle
 
 void keyPressed()
 {
+  
+  //This button turns the engines on and the fuel gradually decreases
   if(key == 'p')
   {
     engine_status = 1;
@@ -501,6 +508,7 @@ void keyPressed()
     }
   }
   
+  //This button turns the engines off and the fuel gradually increases
   if(key == 'o')
   {
      engine_status = 0; 
@@ -522,6 +530,8 @@ void keyPressed()
     }
   }
   
+  
+  //This controls the radar circles adding new circles and playing a radar sound
   if(key == 'r')
   {
      if (circles < MAXCIRCLES) 
@@ -533,13 +543,14 @@ void keyPressed()
      }
   }
   
+  ///This controls the radar circles removing new circles and playing a radar sound
   if(key == 'e')
   {
     circles = circles - 1; 
   }
 }
 
-
+//I use the mousePressed fuction to turn the weapons system on and off
 void mousePressed()
 {
   if (mouseX > width - 47 - circleSize && mouseX < width - 47 + circleSize && mouseY > 325 - circleSize && mouseY < 325 + circleSize && mousePressed)
@@ -562,22 +573,4 @@ void mousePressed()
     ellipse(width - 47, width - 47, circleSize, circleSize);
     overCircle1 = false;
   }
-}
-
-void missile1()
-{
-   if(missileon == 1)
-   {
-     noStroke();
-     fill(255, 0 , 0);
-     triangle(missileleft_x, missileleft_y, mouseX, mouseY, mouseX + 10, mouseY);
-     triangle(missileright_x, missileright_y, mouseX, mouseY, mouseX + 10, mouseY);
-   }
-   else
-   {
-     noStroke();
-     fill(0);
-     triangle(missileleft_x, missileleft_y, mouseX, mouseY, mouseX + 10, mouseY);
-     triangle(missileright_x, missileright_y, mouseX, mouseY, mouseX + 10, mouseY); 
-   }
 }
