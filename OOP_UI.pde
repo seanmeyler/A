@@ -1,3 +1,13 @@
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
+Minim minim;
+AudioPlayer sound1,sound2;
+
 PFont font;
 PImage background;
 
@@ -72,6 +82,10 @@ void setup()
   
   //Wanted a differenct curson rather than a mouse pointer for a more SciFi look
   cursor(CROSS); 
+  
+  minim = new Minim(this);
+  sound1 = minim.loadFile("engine.mp3");
+  sound2 = minim.loadFile("radar.mp3");
 }
 
 void draw()
