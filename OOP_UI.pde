@@ -137,6 +137,8 @@ void basic_shape()
    line(width, height - 200,  width - 120, height - 78);
 }
 
+
+//This fuction draws the basic shape of the radar using for loops to create for loops of different sizes
 void radar_tool()
 {
    int rad_width = 15;
@@ -151,10 +153,13 @@ void radar_tool()
      strokeWeight(0.3);
      noFill();
      ellipse(187, 167, rad_width, rad_width);
+     //I increment the rad_width variable to space the lines between the radar out and make each circle bigger
      rad_width += 15;
    } 
 }
 
+
+//In this fuction I wanted to create a pusalting effect for some part of the UI
 void pulsating_lines()
 {
    float a = map(transparency, 0, 1, 0, 255);
@@ -172,6 +177,8 @@ void pulsating_lines()
       trans = - trans;
    }
    
+   
+   //Creating some pulsating lines around the UI for a pretty look
    //TOP LEFT
    line(10, 10, 10, 165);
    line(13, 10, 165, 10);
@@ -186,6 +193,8 @@ void pulsating_lines()
    line(13, height - 90, 90, height - 90); 
 }
 
+
+//This creates a system display which displays a screen of a system loading then gives the message system online
 void system_display()
 {  
    if(sys1 == 0)
@@ -203,6 +212,8 @@ void system_display()
      rect(475, height - 150, load_width, 10);
      textSize(20);
      text("SYSTEM LOADING...", 485, height - 170);
+     
+     //If statements to give the loading bar effect
      if(load_width <= 200)
      {
        load_width++;
@@ -219,6 +230,7 @@ void system_display()
    }
 }
 
+//Creates my speed display as well as engine active or inactive
 void speed_display()
 {
    fill(0);
