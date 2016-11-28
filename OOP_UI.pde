@@ -6,7 +6,7 @@ import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
 Minim minim;
-AudioPlayer sound1,sound2;
+AudioPlayer sound1, sound2, sound3, sound4;
 
 PFont font;
 PImage background;
@@ -85,7 +85,10 @@ void setup()
   
   minim = new Minim(this);
   sound1 = minim.loadFile("engine.mp3");
+  sound1.loop();
   sound2 = minim.loadFile("radar.mp3");
+  sound3 = minim.loadFile("regen.mp3");
+  sound4 = minim.loadFile("degen.mp3");
 }
 
 void draw()
@@ -507,6 +510,7 @@ void keyPressed()
   //This button turns the engines on and the fuel gradually decreases
   if(key == 'p')
   {
+    sound3.play();
     engine_status = 1;
     
     if(fuel_width >= 0)
@@ -525,6 +529,7 @@ void keyPressed()
   //This button turns the engines off and the fuel gradually increases
   if(key == 'o')
   {
+    sound4.play();
      engine_status = 0; 
     
     if(fuel_width <= 0)
@@ -548,6 +553,7 @@ void keyPressed()
   //This controls the radar circles adding new circles and playing a radar sound
   if(key == 'r')
   {
+    sound2.play();
      if (circles < MAXCIRCLES) 
      {
        stroke(0, 255, 255);
@@ -560,6 +566,7 @@ void keyPressed()
   ///This controls the radar circles removing new circles and playing a radar sound
   if(key == 'e')
   {
+    sound2.play();
     circles = circles - 1; 
   }
 }
